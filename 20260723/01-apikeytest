@@ -4,7 +4,7 @@ import os
 client = OpenAI(
     # 如果没有配置环境变量，请用阿里云百炼API Key替换：api_key="sk-xxx"
     # api_key=os.getenv("DASHSCOPE_API_KEY"),
-    api_key="sk-ws-H.EHEPXHH.D9pg.MEUCIElaiBtGHrVvLuKCZTJ0_ObtfXoXCRbDcz3YHTKGoSKsAiEAuPnMZxptHxFlIwr2Ex9SABeohMXChzGSW1O5w03pTw4",
+    # api_key="sk-ws-H.EHEPXHH.D9pg.MEUCIElaiBtGHrVvLuKCZTJ0_ObtfXoXCRbDcz3YHTKGoSKsAiEAuPnMZxptHxFlIwr2Ex9SABeohMXChzGSW1O5w03pTw4",
     base_url="https://ws-d0ndnclzj3aanvm0.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
 )
 
