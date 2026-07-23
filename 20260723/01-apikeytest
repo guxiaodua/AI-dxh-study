@@ -5,14 +5,15 @@ client = OpenAI(
     # 如果没有配置环境变量，请用阿里云百炼API Key替换：api_key="sk-xxx"
     # api_key=os.getenv("DASHSCOPE_API_KEY"),
     # api_key="sk-ws-H.EHEPXHH.D9pg.MEUCIElaiBtGHrVvLuKCZTJ0_ObtfXoXCRbDcz3YHTKGoSKsAiEAuPnMZxptHxFlIwr2Ex9SABeohMXChzGSW1O5w03pTw4",
-    base_url="https://ws-d0ndnclzj3aanvm0.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    # base_url="https://ws-d0ndnclzj3aanvm0.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    base_url="http://localhost:11434/v1",
 )
 
-messages = [{"role": "user", "content": "你是谁？"}]
+messages = [{"role": "user", "content": "amd的9070显卡可以跑大模型吗"}]
 completion = client.chat.completions.create(
-    model="glm-5",  # 您可以按需更换为其它深度思考模型
+    model="qwen3.5:9b-q4_K_M",  # 您可以按需更换为其它深度思考模型
     messages=messages,
-    extra_body={"enable_thinking": True},
+    extra_body={"enable_thinking": True}, # TODO::复杂问题，代码无法回答，但是ollama控制台可以，在test_code.py中解决
     stream=True
 )
 is_answering = False  # 是否进入回复阶段
