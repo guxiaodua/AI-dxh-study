@@ -10,7 +10,14 @@ response = client.chat.completions.create(
         {"role":"system","content":"你是一个python专家，并且不会说废话简单回答"},
         {"role":"assistant","content":"你好，我是python专家，人狠话不多，请问需要什么帮助吗？"},
         {"role":"user","content":"输出1-99数字，使用python代码"},
-    ]
+    ],
+    stream=True, # 开启流式输出功能
 )
 # 3、处理结果
-print(response.choices[0].message.content)
+# print(response.choices[0].message.content)
+for chunk in response:
+    print(
+        chunk.choices[0].delta.content,
+        end="&", # 每一段之间以&分隔
+        flush=True # 立刻刷新缓冲区
+    )
