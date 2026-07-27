@@ -1,28 +1,19 @@
-from openai import OpenAI
+import ollama
 
-client = OpenAI(
-    base_url="http://localhost:11434/v1",
-    api_key="dummy"  # ollama本地不需要真实key，必须填一个占位，不能空
-)
+messages = [
+    {"role":"system","content":"你是一个情种，擅长写对联"},
+    {"role":"user","content":"写一副对联"}
+]
 
-messages = [{"role": "user", "content": "吃麻辣火锅怎么样"}]
-completion = client.chat.completions.create(
+resp = ollama.chat(
     model="qwen3.5:9b-q4_K_M",
     messages=messages,
     stream=True,
-    # 关键：传给ollama的显存控制参数
-    extra_body={
-        "options": {
-            "num_ctx": 2048,
-            "num_gpu": 24
-        }
+    options={
+        "num_ctx":2048,
+        "num_gpu":18
     }
 )
 
-print("\n" + "=" * 20 + "完整回复" + "=" * 20)
-for chunk in completion:
-    if not chunk.choices:
-        continue
-    delta = chunk.choices[0].delta
-    if delta.content:
-        print(delta.content, end="", flush=True)
+for chunk in resp:
+    print(chunk["message"]["content"],end="",flush=True)
