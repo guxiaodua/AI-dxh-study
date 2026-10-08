@@ -40,6 +40,6 @@ if uploader_file is not None:
     st.write(text)
 
     with st.spinner("载入知识库中……"): # 在spinner内的代码执行过程中，会有一个转圈的动画
-        time.sleep(5)
+        time.sleep(1)
         res = st.session_state["service"].upload_by_str(text, name)
         st.write(res)
