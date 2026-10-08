@@ -17,7 +17,7 @@ if uploader_file is not None:
     # 提取文件信息
     name = uploader_file.name
     type = uploader_file.type
-    size = uploader_file.size / 1024 #KB
+    size = uploader_file.size / 1024 # KB
 
     st.subheader(f"文件名:{name}")
     st.write(f"格式:{type} | 大小:{size:.2f}KB")
