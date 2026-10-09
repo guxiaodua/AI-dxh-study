@@ -1,0 +1,4 @@
+1、上传本地资料
+streamlit run app_file_uploader.py
+2、运行网页版
+streamlit run app_qa.py
